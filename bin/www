@@ -7,9 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('agesbec-api:server');
 var http = require('http');
-var https = require('https');
 const io = require('socket.io')(http);
-const fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -18,14 +16,6 @@ const fs = require('fs');
 const config = require('../config.json')
 var port = normalizePort(process.env.PORT || config.server.port);
 app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-// const server = https.createServer({
-//     key: fs.readFileSync('../ssl/keys/afc36_6359d_ed277dfd9590e67979dd95af0a22bbbc.key'),
-//     cert: fs.readFileSync('../ssl/certs/agenciaboz_com_br_afc36_6359d_1668344298_fcc9c3adf9ee76a9c23bb51945b48a89.crt'),
-// }, app);
 
 var server = http.createServer(app);
 /**
