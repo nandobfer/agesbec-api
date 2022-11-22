@@ -6,7 +6,5 @@ router.get('/', (request, response) => {
 })
 
 // sub-routes
-// const login = require('./login');
-// router.use('/login', login);
 
 module.exports = router;
