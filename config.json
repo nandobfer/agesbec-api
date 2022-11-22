@@ -1,0 +1,15 @@
+{
+    "server": {
+        "hostname": "127.0.0.1",
+        "port": 33456
+    },
+    "app":{
+        "database": {
+            "host": "localhost",
+            "port": "3306",
+            "user": "suporte",
+            "password": "C4ndidato01",
+            "database": "siscomex"
+        }
+    }
+}
