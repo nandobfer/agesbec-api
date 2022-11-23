@@ -9,4 +9,7 @@ router.get('/', (request, response) => {
 const status = require('./status');
 router.use('/status', status);
 
+const acessos = require('./acessos');
+router.use('/acessos', acessos);
+
 module.exports = router;
