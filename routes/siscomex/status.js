@@ -21,7 +21,7 @@ router.get('/', (request, response, next) => {
             timeout: 40000
         }, (error, results) => {
             if (error) console.error(error)
-            const now = results[0]
+            const now = results[0]["NOW()"]
 
             response.json({lastping, now})
             mysql.end()
