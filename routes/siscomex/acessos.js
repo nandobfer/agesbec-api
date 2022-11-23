@@ -12,9 +12,8 @@ router.get('/', (request, response, next) => {
 		timeout: 40000,
 	}, (error, results) => {
 		if (error) console.error(error);
-
-        console.log(results)
         response.json(results)
+        mysql.end()
 
 	});
 
