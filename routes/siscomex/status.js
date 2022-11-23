@@ -3,7 +3,7 @@ const router = express.Router();
 const config = require('../../config.json')
 const newMysql = require('../../src/database')
 
-router.post('/', (request, response, next) => {    
+router.get('/', (request, response, next) => {    
 
 	const mysql = newMysql(config.database);
 	mysql.connect();
