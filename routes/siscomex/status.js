@@ -14,10 +14,19 @@ router.get('/', (request, response, next) => {
 	}, (error, results) => {
 		if (error) console.error(error);
 
-        console.log(results)
+        const lastping = results[0].lastping
 
-        response.json(results)
-        mysql.end()
+        mysql.query({
+            sql: 'SELECT NOW()',
+            timeout: 40000
+        }, (error, results) => {
+            if (error) console.error(error)
+            console.log(results)
+
+            response.json({lastping, results})
+            mysql.end()
+        })
+
 	});
 
 
