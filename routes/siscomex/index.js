@@ -6,5 +6,7 @@ router.get('/', (request, response) => {
 })
 
 // sub-routes
+const status = require('./status');
+app.use('/status', status);
 
 module.exports = router;
