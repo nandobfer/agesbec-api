@@ -3,9 +3,8 @@ const router = express.Router();
 const config = require('../../config.json')
 const newMysql = require('../../src/database')
 
-router.post('/', (request, response, next) => {    
-	const data = request.body;
-
+router.get('/', (request, response, next) => {    
+    
 	const mysql = newMysql(config.database);
 	mysql.connect();
 	
@@ -14,6 +13,8 @@ router.post('/', (request, response, next) => {
 		timeout: 40000, // 40s
 	}, (error, results) => {
 		if (error) console.error(error);
+
+        console.log(results)
 
         response.json(results)
         mysql.end()
