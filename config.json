@@ -3,7 +3,7 @@
         "port": 33456
     },
     "database": {
-        "host": "localhost",
+        "host": "192.168.50.3",
         "port": "3306",
         "user": "suporte",
         "password": "C4ndidato01",
