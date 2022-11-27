@@ -4,7 +4,7 @@ const config = require('../../config.json')
 
 router.post('/', (request, response, next) => {    
     const data = request.body
-    const cert = config.certificate
+    const cert = {crt: config.certificate + config.certificate.crt, pem: config.certificate + config.certificate.pem}
 
     console.log(cert)
     console.log(data)
