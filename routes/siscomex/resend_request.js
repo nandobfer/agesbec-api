@@ -10,7 +10,7 @@ router.post('/', (_request, response, next) => {
     console.log(request)
     const command = `echo "${data}"`
     
-    exec(command, (error, stdout, stderr) => {
+    exec('echo oi', (error, stdout, stderr) => {
         console.log(stdout)
         response.json({test: stdout})
     })
