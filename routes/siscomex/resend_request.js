@@ -5,12 +5,13 @@ const exec = require('child_process').exec;
 
 router.post('/', (_request, response, next) => {    
     const data = _request.body
-    const command = `echo "${data}"`
+    console.log(data)
+    // const command = `echo "${data}"`
     
-    exec(command, (error, stdout, stderr) => {
-        console.log(stdout)
-        response.json({test: stdout})
-    })
+    // exec(command, (error, stdout, stderr) => {
+    //     console.log(stdout)
+    //     response.json({test: stdout})
+    // })
 
 });
 
