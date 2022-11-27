@@ -8,7 +8,7 @@ router.post('/', (_request, response, next) => {
     
     const request = data.request.body
     console.log(request)
-    const command = `echo "${request}"`
+    const command = `echo "${JSON.stringify(request)}"`
     
     exec(command, (error, stdout, stderr) => {
         console.log(stdout)
