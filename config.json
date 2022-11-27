@@ -13,5 +13,6 @@
         "dir": "/home/suporte/certificado/agesbec/",
         "crt": "agesbec.crt",
         "pem": "agesbec.pem"
-    }
+    },
+    "url": "https://val.portalunico.siscomex.gov.br/recintos-ext/api/ext"
 }
