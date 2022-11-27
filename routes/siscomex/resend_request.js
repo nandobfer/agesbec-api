@@ -11,7 +11,9 @@ router.post('/', (_request, response, next) => {
     const command = `echo "${JSON.stringify(request)}"`
     
     exec(command, (error, stdout, stderr) => {
-        console.log(stdout)
+        // console.log(stdout)
+        const test = JSON.parse(stdout)
+        console.log(test)
         response.json({test: stdout})
     })
 
