@@ -8,5 +8,10 @@
         "user": "suporte",
         "password": "C4ndidato01",
         "database": "siscomex"
+    },
+    "certificate": {
+        "dir": "/home/suporte/certificado/agesbec/",
+        "crt": "agesbec.crt",
+        "pem": "agesbec.pem"
     }
 }
