@@ -23,7 +23,7 @@ router.get('/test', (request, response, next) => {
     const command = `python3 /home/suporte/siscomex/src/Receita.py testando argumentos`
     
     exec(command, (error, stdout, stderr) => {
-        // console.log(stdout)
+        console.log(stdout)
         // const test = JSON.parse(stdout)
         // console.log(test)
         response.json({test: stdout})
