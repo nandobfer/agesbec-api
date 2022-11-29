@@ -11,13 +11,12 @@ router.post('/', (_request, response, next) => {
 
     console.log(command)
     
-    // exec(command, (error, stdout, stderr) => {
-    //     // console.log(stdout)
+    exec(command, (error, stdout, stderr) => {
+        // console.log(stdout)
 
-    //     response.json({test: 'success'})
-    // })
+        response.json({test: 'success'})
+    })
 
-    response.json({test: 'success'})
 });
 
 router.get('/test', (request, response, next) => {
