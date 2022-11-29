@@ -16,6 +16,7 @@ router.post('/', (request, response, next) => {
         ]
 	}, (error, results) => {
 		if (error) console.error(error);
+        console.log(results)
         response.json(results)
         mysql.end()
 
