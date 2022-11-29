@@ -8,14 +8,14 @@ router.post('/', (_request, response, next) => {
     
     const request = data.request.body
     console.log(request)
-    const command = `python3 /home/suporte/siscomex/src/Receita.py testando argumentos`
+    const command = `python3 /home/suporte/siscomex/src/Receita.py ${request}`
+    console.log(request)
     
-    exec(command, (error, stdout, stderr) => {
-        // console.log(stdout)
-        const test = JSON.parse(stdout)
-        console.log(test)
-        response.json({test: 'success'})
-    })
+    // exec(command, (error, stdout, stderr) => {
+    //     // console.log(stdout)
+
+    //     response.json({test: 'success'})
+    // })
 
 });
 
