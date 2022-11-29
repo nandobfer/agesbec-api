@@ -22,7 +22,7 @@ router.post('/', (_request, response, next) => {
         if (err) 
           throw err;
         // Results is an array consisting of messages collected during execution
-        for (let message in results) {
+        for (let message of results) {
             console.log(message)
         }
       });
