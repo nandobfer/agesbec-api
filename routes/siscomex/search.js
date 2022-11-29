@@ -21,4 +21,22 @@ router.post('/', (request, response, next) => {
 
 });
 
+router.post('/credenciamento', (request, response, next) => {    
+    const data = request.body
+	const mysql = newMysql(config.database);
+	mysql.connect();
+
+	mysql.query({
+		sql: `SELECT * FROM funcionarios WHERE nome LIKE "%${data.name}%" order by id DESC`,
+		timeout: 40000,
+	}, (error, results) => {
+		if (error) console.error(error);
+        response.json(results)
+        mysql.end()
+
+	});
+
+
+});
+
 module.exports = router;
