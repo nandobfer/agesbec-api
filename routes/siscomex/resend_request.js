@@ -22,7 +22,7 @@ router.post('/', (_request, response, next) => {
         if (err) 
           throw err;
         // Results is an array consisting of messages collected during execution
-        const sis_reponse = results[0]
+        const sis_reponse = JSON.parse(results[0])
         console.log(sis_reponse)
         console.log(typeof sis_reponse)
 
