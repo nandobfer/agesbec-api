@@ -7,7 +7,7 @@ router.post('/', (_request, response, next) => {
     const data = _request.body
     
     const request = data.request.body
-    const command = `python3 /home/suporte/siscomex/src/Receita.py ${JSON.stringify(request)}`
+    const command = `python3 /home/suporte/siscomex/src/Receita.py '${JSON.stringify(request)}'`
 
     console.log(command)
     
