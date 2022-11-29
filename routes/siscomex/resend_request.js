@@ -18,7 +18,7 @@ router.post('/', (_request, response, next) => {
         args: ['${JSON.stringify(request)}']
       };
 
-      PythonShell.run('src/Receita.py', options, function (err, results) {
+      PythonShell.run('resend_request.py', options, function (err, results) {
         if (err) 
           throw err;
         // Results is an array consisting of messages collected during execution
