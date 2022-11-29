@@ -7,8 +7,9 @@ router.post('/', (_request, response, next) => {
     const data = _request.body
     
     const request = data.request.body
-    console.log(request)
     const command = `python3 /home/suporte/siscomex/src/Receita.py ${request}`
+
+    console.log(command)
     
     // exec(command, (error, stdout, stderr) => {
     //     // console.log(stdout)
