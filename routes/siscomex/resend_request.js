@@ -25,6 +25,8 @@ router.post('/', (_request, response, next) => {
         for (let message of results) {
             console.log(message)
         }
+
+        response.send(JSON.stringify(results))
       });
 
 });
