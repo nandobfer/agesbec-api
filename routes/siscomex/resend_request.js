@@ -15,7 +15,7 @@ router.post('/', (_request, response, next) => {
         pythonPath: '/usr/bin/python3',
         pythonOptions: ['-u'],
         scriptPath: '/home/suporte/siscomex',
-        args: [`'${JSON.stringify(request)}'`]
+        args: [`${JSON.stringify(request)}`]
       };
 
       PythonShell.run('resend_request.py', options, function (err, results) {
