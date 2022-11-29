@@ -10,7 +10,11 @@ router.post('/', (_request, response, next) => {
     const spawn = require("child_process").spawn
 
     console.log(request)
-    const pythonProcess = spawn('python3',["/home/suporte/siscomex/resend_request.py", `'${JSON.stringify(request)}'`]);
+    const pythonProcess = spawn('cd /home/suporte/siscomex && python3',["resend_request.py", `'${JSON.stringify(request)}'`]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(data)
+    });
 
     response.json({test: 'success'})
 });
