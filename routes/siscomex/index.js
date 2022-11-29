@@ -18,4 +18,7 @@ router.use('/resend_request', resend_request);
 const search = require('./search');
 router.use('/search', search);
 
+const credenciamentos = require('./credenciamentos');
+router.use('/credenciamentos', credenciamentos);
+
 module.exports = router;
