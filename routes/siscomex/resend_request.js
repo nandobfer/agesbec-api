@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const config = require('../../config.json')
 const exec = require('child_process').exec;
+const PythonShell = require('python-shell').PythonShell;
 
 router.post('/', (_request, response, next) => {    
     const data = _request.body
@@ -9,13 +10,20 @@ router.post('/', (_request, response, next) => {
     const request = data.request.body
     const command = `cd /home/suporte/siscomex && python3 src/Receita.py '${JSON.stringify(request)}'`
 
-    console.log(command)
-    
-    exec(command, (error, stdout, stderr) => {
-        // console.log(stdout)
+    const options = {
+        mode: 'text',
+        pythonPath: '/usr/bin/python3',
+        pythonOptions: ['-u'],
+        scriptPath: '/home/suporte/siscomex',
+        args: ['${JSON.stringify(request)}']
+      };
 
-        response.json({test: 'success'})
-    })
+      PythonShell.run('src/Receita.py', options, function (err, results) {
+        if (err) 
+          throw err;
+        // Results is an array consisting of messages collected during execution
+        console.log('results: %j', results);
+      });
 
 });
 
