@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../../config.json')
-const exec = require('child_process').exec;
+const newMysql = require('../../src/database')
 const PythonShell = require('python-shell').PythonShell;
 
 router.post('/', (_request, response, next) => {    
     const data = _request.body
+    const mysql = newMysql(config.database);
     
     const request = data.request.body
     const command = `cd /home/suporte/siscomex && python3 src/Receita.py '${JSON.stringify(request)}'`
@@ -24,22 +25,39 @@ router.post('/', (_request, response, next) => {
         // Results is an array consisting of messages collected during execution
         const sis_reponse = JSON.parse(results[0])
         console.log(sis_reponse)
-        console.log(typeof sis_reponse)
 
-        response.send(JSON.stringify(results))
+        mysql.connect();
+        
+        mysql.query({
+            sql: `UPDATE acessos SET status = ? where id = ? `,
+            timeout: 40000,
+            values: [
+                JSON.stringify(sis_reponse),
+                sis_reponse.request.body.idEvento,
+            ]
+        }, (error, results) => {
+            if (error) {
+                console.error(Error)
+            } else {
+
+                mysql.query({
+                    sql: 'SELECT * FROM acessos ORDER BY id DESC',
+                    timeout: 40000,
+                }, (error, results) => {
+                    if (error) {
+                        console.error(error)
+                        mysql.end()
+                    } else {
+                        response.json(results)
+                        mysql.end()
+                    }
+                })
+            }
+
+        });
+
       });
 
 });
-
-router.get('/test', (request, response, next) => {
-    const command = `python3 /home/suporte/siscomex/src/Receita.py testando argumentos`
-    
-    exec(command, (error, stdout, stderr) => {
-        console.log(stdout)
-        // const test = JSON.parse(stdout)
-        // console.log(test)
-        response.json({test: stdout})
-    })
-})
 
 module.exports = router;
