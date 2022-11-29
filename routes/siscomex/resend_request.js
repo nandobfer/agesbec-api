@@ -14,7 +14,7 @@ router.post('/', (_request, response, next) => {
         // console.log(stdout)
         const test = JSON.parse(stdout)
         console.log(test)
-        response.json({test: stdout})
+        response.json({test: 'success'})
     })
 
 });
