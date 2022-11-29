@@ -17,6 +17,7 @@ router.post('/', (_request, response, next) => {
     //     response.json({test: 'success'})
     // })
 
+    response.json({test: 'success'})
 });
 
 router.get('/test', (request, response, next) => {
