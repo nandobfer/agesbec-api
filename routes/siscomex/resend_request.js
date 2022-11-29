@@ -7,16 +7,12 @@ router.post('/', (_request, response, next) => {
     const data = _request.body
     
     const request = data.request.body
-    const command = `python3 /home/suporte/siscomex/src/Receita.py '${JSON.stringify(request)}'`
+    const spawn = require("child_process").spawn
 
-    console.log(command)
-    
-    exec(command, (error, stdout, stderr) => {
-        // console.log(stdout)
+    console.log(request)
+    const pythonProcess = spawn('python',["/home/suporte/siscomex/src/Receita.py", `'${JSON.stringify(request)}'`]);
 
-        response.json({test: 'success'})
-    })
-
+    response.json({test: 'success'})
 });
 
 router.get('/test', (request, response, next) => {
