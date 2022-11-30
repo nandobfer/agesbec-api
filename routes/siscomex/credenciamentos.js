@@ -8,7 +8,7 @@ router.get('/', (request, response, next) => {
 	mysql.connect();
 	
 	mysql.query({
-		sql: `SELECT * FROM funcionarios order by codigo DESC`,
+		sql: `SELECT * FROM funcionarios order by id DESC`,
 		timeout: 40000,
 	}, (error, results) => {
 		if (error) console.error(error);
